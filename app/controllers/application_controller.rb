@@ -14,7 +14,7 @@ get '/recipes/new' do
 end
  
 post '/recipes' do
-  @recipe = Recipe.create(:title => params[:title], :content => params[:content])
+  @recipe = Recipe.create(:name => params[:name], :ingredients => params[:ingredients], :cook_time => params[:cook_time])
   redirect to "/recipes/#{@recipe.id}"
 end
 
