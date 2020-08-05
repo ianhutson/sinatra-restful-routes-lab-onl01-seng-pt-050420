@@ -36,4 +36,10 @@ patch '/articles/:id' do #edit action
   redirect to "/articles/#{@article.id}"
 end
 
+delete '/articles/:id' do #delete action
+  @article = Article.find_by_id(params[:id])
+  @article.delete
+  redirect to '/articles'
+end
+
 end
