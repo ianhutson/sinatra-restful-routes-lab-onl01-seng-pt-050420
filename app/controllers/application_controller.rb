@@ -4,6 +4,11 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
 
-  # code actions here!
+  get '/articles' do
+  @articles = Article.all
+  erb :index
+end
+
+
 
 end
