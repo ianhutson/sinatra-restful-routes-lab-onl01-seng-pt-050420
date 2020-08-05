@@ -4,42 +4,42 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
 
-  get '/articles' do
-  @articles = Article.all
+  get '/recipes' do
+  @recipes = Recipe.all
   erb :index
 end
 
-get '/articles/new' do
+get '/recipes/new' do
   erb :new
 end
  
-post '/articles' do
-  @article = Article.create(:title => params[:title], :content => params[:content])
-  redirect to "/articles/#{@article.id}"
+post '/recipes' do
+  @recipe = Recipe.create(:title => params[:title], :content => params[:content])
+  redirect to "/recipes/#{@recipe.id}"
 end
 
-get '/articles/:id' do
-  @article = Article.find_by_id(params[:id])
+get '/recipes/:id' do
+  @recipe = Recipe.find_by_id(params[:id])
   erb :show
 end
 
-get '/articles/:id/edit' do  #load edit form
-    @article = Article.find_by_id(params[:id])
+get '/recipes/:id/edit' do  #load edit form
+    @recipe = Recipe.find_by_id(params[:id])
     erb :edit
   end
  
-patch '/articles/:id' do #edit action
-  @article = Article.find_by_id(params[:id])
-  @article.title = params[:title]
-  @article.content = params[:content]
-  @article.save
-  redirect to "/articles/#{@article.id}"
+patch '/recipes/:id' do #edit action
+  @recipe = Recipe.find_by_id(params[:id])
+  @recipe.title = params[:title]
+  @recipe.content = params[:content]
+  @recipe.save
+  redirect to "/recipes/#{@recipe.id}"
 end
 
-delete '/articles/:id' do #delete action
-  @article = Article.find_by_id(params[:id])
-  @article.delete
-  redirect to '/articles'
+delete '/recipes/:id' do #delete action
+  @recipe = recipe.find_by_id(params[:id])
+  @recipe.delete
+  redirect to '/recipes'
 end
 
 end
