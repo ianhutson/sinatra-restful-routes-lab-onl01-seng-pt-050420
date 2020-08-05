@@ -37,7 +37,7 @@ patch '/recipes/:id' do #edit action
 end
 
 delete '/recipes/:id' do #delete action
-  @recipe = recipe.find_by_id(params[:id])
+  @recipe = Recipe.find_by_id(params[:id])
   @recipe.delete
   redirect to '/recipes'
 end
